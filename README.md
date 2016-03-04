@@ -2,7 +2,7 @@
 
 This is a bash shell script that collects quota usage information for a specified virtual server and alerts is the specified usage threshold is exceeded.
 
-###Usage:
+###Usage
 
 ```
 Virtualmin virtual server quota check plugin for Nagios
@@ -13,6 +13,12 @@ Arguments :  -d <domain> -t <type:server|user> -c <critical_threshold> -w <warni
         -c      critical threshold level: quota usage threshold for critical alert, in percent defaults to 95
         -w      warning threshold level: quota usage threshold for warning alert, in percent defaults to 90
 ```
+
+The Virtualmin CLI tool is required to run as root thus this plugin relies on `sudo`. To allow the `nagios` user (or the one that runs your Nagios or `nagios-nrpe-server` process) you need to whitelist `/usr/sbin/virtualmin` the following command for each checked domain:
+```
+nagios  ALL=(root) NOPASSWD: /usr/sbin/virtualmin list-domains --multiline --domain example.com
+```
+It is possible to whitelist the command with any argument so that you do not have to add a new record for every domain but **you have to be extremly cautious with this**.
 
 ### License
 
