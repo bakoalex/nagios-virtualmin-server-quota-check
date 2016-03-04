@@ -39,8 +39,6 @@ fi
 if [ "$TYPE" != "server" -a "$TYPE" != "user" ] 
 then 
     TYPE="server" 
-else 
-    TYPE="$OPTARG" 
 fi
 
 if [ "$LEVEL_CRITICAL" == "" ] 
