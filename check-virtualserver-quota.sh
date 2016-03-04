@@ -54,7 +54,7 @@ fi
 serverinfoPattern=$( echo "$TYPE quota\|$TYPE quota used" | awk '{print tolower($0)}' )
 totalPattern=$( echo "$TYPE quota: (\w*).*" | awk '{print tolower($0)}' )
 usedPattern=$( echo "$TYPE quota used: (\w*).*" | awk '{print tolower($0)}' )
-serverinfo=$( sudo virtualmin list-domains --domain "$DOMAIN" --multiline | grep -i "$serverinfoPattern" )
+serverinfo=$( sudo virtualmin list-domains --multiline --domain "$DOMAIN" | grep -i "$serverinfoPattern" )
 
 if [ "$serverinfo" == "" -o -z "${serverinfo// }" ]
 then
